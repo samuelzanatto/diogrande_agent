@@ -44,14 +44,34 @@ Isso irá gerar:
 - Um arquivo `.zip` em `out/make/zip/darwin/`
 - O app empacotado em `out/AgentSesau-darwin-x64/`
 
-### Build para Windows (apenas em Windows)
+### Build para Windows
+
+⚠️ **IMPORTANTE:** Se você está em um Mac com Apple Silicon (M1/M2/M3), você DEVE especificar a arquitetura de destino!
+
 ```bash
-npm run make:win
+# Windows x64 (64-bit) - RECOMENDADO para 90%+ dos PCs Windows
+npm run make:win:x64
+
+# Windows ia32 (32-bit) - Para sistemas Windows antigos
+npm run make:win:ia32
+
+# Ambos (x64 + ia32) - Cobre 99% dos PCs Windows
+npm run make:win:all
+
+# Windows ARM64 - Apenas para Surface Pro X e similares (raro)
+npm run make:win:arm64
 ```
 
 Isso irá gerar:
-- Um instalador `.exe` em `out/make/squirrel.windows/`
+- Um instalador `.exe` em `out/make/squirrel.windows/x64/`
+- Um arquivo `.zip` portátil em `out/make/zip/win32/x64/`
 - O app empacotado em `out/AgentSesau-win32-x64/`
+
+**Nota sobre cross-compilation:**
+- Builds do Mac para Windows geralmente funcionam bem
+- Sempre teste o executável em uma máquina Windows real
+- Para builds mais confiáveis, use uma máquina Windows ou GitHub Actions
+- Veja `docs/WINDOWS_COMPATIBILITY_FIX.md` para mais detalhes
 
 ### Build para ambas as plataformas
 ```bash

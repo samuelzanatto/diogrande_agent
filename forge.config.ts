@@ -24,7 +24,7 @@ const config: ForgeConfig = {
       setupExe: 'AgentSesau-Setup.exe',
       noMsi: true,
     }),
-    new MakerZIP({}, ['darwin']),
+    new MakerZIP({}, ['darwin', 'win32']), // Adicionado win32 para criar ZIP no Windows
     new MakerRpm({
       options: {
         name: 'agent-sesau',
