@@ -4,6 +4,8 @@ import { streamText, smoothStream, stepCountIs } from 'ai';
 import ReactMarkdown from 'react-markdown';
 import { listarDiariosRecentesTool, lerDiarioOficialTool, buscarPublicacaoTool } from './tools/diogrande-tools';
 import './index.css';
+// Import da logo como asset do Vite
+import logoImage from './assets/logo.png';
 
 // Inicializar provider com API key
 const groqProvider = createGroq({
@@ -270,10 +272,18 @@ Sempre utilize as ferramentas de forma eficiente e apresente informações de fo
             <span className={`search-icon${isProcessing ? ' search-icon--processing' : ''}`}>
               {isProcessing ? '⚙️' : (
                 <img
-                  src="/logo.png"
+                  src={logoImage}
                   alt="Logo do agente"
                   className="search-icon-image"
                   draggable={false}
+                  onError={(e) => {
+                    // Fallback para emoji se a imagem não carregar
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    if (target.parentElement) {
+                      target.parentElement.textContent = '🤖';
+                    }
+                  }}
                 />
               )}
             </span>

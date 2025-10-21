@@ -24,8 +24,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'SF Pro Display', sans-serif;
-  background: transparent;
-  color: var(--color-text);
+  background: transparent !important;
+  color: var(--color-text) !important;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -162,16 +162,16 @@ body {
 
 .message-bubble.user {
   align-self: flex-end;
-  background: linear-gradient(135deg, rgb(59, 130, 246), rgb(99, 102, 241));
-  color: var(--color-text);
+  background: linear-gradient(135deg, rgb(59, 130, 246), rgb(99, 102, 241)) !important;
+  color: #ffffff !important;
   margin-left: auto;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .message-bubble.assistant {
   align-self: flex-start;
-  background: rgb(39, 39, 42);
-  color: var(--color-text);
+  background: rgb(39, 39, 42) !important;
+  color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
@@ -192,6 +192,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   white-space: pre-wrap;
+  color: inherit !important;
 }
 
 /* Markdown styling dentro das mensagens */
@@ -294,8 +295,8 @@ body {
   min-width: 0;
   border: none;
   outline: none;
-  background: transparent;
-  color: var(--color-text);
+  background: transparent !important;
+  color: #ffffff !important;
   font-size: 18px;
   font-weight: 400;
   padding: 0;
@@ -303,7 +304,7 @@ body {
 }
 
 .search-input::placeholder {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .clear-button {
@@ -436,13 +437,5 @@ body {
   animation: slideIn 0.3s ease-out;
 }
 
-/* Dark mode support (already dark by default) */
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-bg: rgba(255, 255, 255, 0.95);
-    --color-surface: rgba(240, 240, 240, 0.8);
-    --color-border: rgba(0, 0, 0, 0.1);
-    --color-text: #000000;
-    --color-text-muted: rgba(0, 0, 0, 0.6);
-  }
-}
+/* Forçar dark mode sempre - não usar prefers-color-scheme no Windows */
+/* @media (prefers-color-scheme: light) é desabilitado intencionalmente */
